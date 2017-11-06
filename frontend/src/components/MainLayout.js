@@ -4,6 +4,8 @@ import NavigationDrawer from "./NavigationDrawer";
 import {fetchCategories} from "../actions/categoryActions";
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
+import {fetchAllPosts} from "../actions/postActions";
+import PropTypes from 'prop-types'
 
 
 class MainLayout extends Component {
@@ -17,13 +19,13 @@ class MainLayout extends Component {
     }
 
     componentWillMount() {
-        this.props.fetchCategories()
+        this.props.fetchData()
     }
 
 
-    toggleDrawer() {
+    toggleDrawer = (open) => {
         this.setState({
-            open: !this.state.open
+            navDrawerOpen: !this.state.navDrawerOpen
         })
     }
 
@@ -37,7 +39,17 @@ class MainLayout extends Component {
             },
             container: {
                 //margin: '80px 20px 20px 15px',
-                paddingLeft: navDrawerOpen ? paddingLeftDrawerOpen : 0
+                paddingLeft: navDrawerOpen ? paddingLeftDrawerOpen : 0,
+                // minHeight: '800px'
+                paddingTop : '80px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                //minWidth: '500px'
+
+            },
+            appBar : {
+                position: "fixed", top: 0,
             }
         };
 
@@ -47,19 +59,19 @@ class MainLayout extends Component {
                     <AppBar
                         title="Readable"
                         iconClassNameRight="muidocs-icon-navigation-expand-more"
+                        onLeftIconButtonTouchTap={this.toggleDrawer}
+                        style={styles.appBar}
                     >
 
                     </AppBar>
                 </div>
 
                 <div>
-                    <NavigationDrawer onToggleDrawer={this.toggleDrawer.bind(this)}/>
-                    <div style={styles.container}>
-                        <h2>Body</h2>
-                        <div>
-                            {this.props.children}
+                    <NavigationDrawer
+                        openState={navDrawerOpen}/>
 
-                        </div>
+                    <div style={styles.container}>
+                        {this.props.children}
                     </div>
                 </div>
 
@@ -78,11 +90,18 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     dispatch,
-    fetchCategories: () =>
-        dispatch(fetchCategories())
+    fetchData: () => {
+        dispatch(fetchCategories());
+        dispatch(fetchAllPosts())
+    }
+
 })
 
 // export default connect(mapStateToProps, mapDispatchToProps)(MainLayout)
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainLayout))
 
 
+
+/*
+                        onToggleDrawer={this.toggleDrawer}/>
+*/

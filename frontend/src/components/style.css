@@ -1,0 +1,31 @@
+.addButton {
+    right: 20px;
+    position: fixed;
+    margin: 0;
+    top: auto;
+    bottom: 20px;
+    left: auto;
+
+}
+
+
+.post {
+    margin-bottom: 10px;
+}
+
+.commentContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.commentAvatar{
+    margin-right: 16px;
+}
+
+.commentContainerTop{
+    flex-direction: row;
+    display: flex;
+}
+.commentContainerBottom{
+    margin-left: 55px;
+}

@@ -5,7 +5,12 @@
   "dependencies": {
     "axios": "^0.17.0",
     "history": "^4.7.2",
+    "intl-messageformat": "^2.2.0",
+    "javascript-time-ago": "^0.4.10",
+    "lodash": "^4.17.4",
     "material-ui": "^0.19.4",
+    "mdi-material-ui": "^2.0.1",
+    "query-string": "^5.0.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
@@ -13,8 +18,14 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
     "react-scripts": "1.0.14",
+    "react-tap-event-plugin": "^3.0.2",
+    "react-time-ago": "^0.3.8",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-form": "^7.1.2",
+    "redux-form-material-ui": "^4.3.0",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
+    "uuid-v4": "^0.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

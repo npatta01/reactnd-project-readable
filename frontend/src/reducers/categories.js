@@ -3,7 +3,7 @@ import * as Types from "../actions/actionTypes"
 
 function categories(state = {
     all: [],
-    current: null
+    current: 'all'
 }, action) {
 
     switch (action.type) {

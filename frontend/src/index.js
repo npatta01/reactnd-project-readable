@@ -7,21 +7,20 @@ import {createStore, applyMiddleware, compose} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducers'
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {Route, Switch} from 'react-router';
 import thunk from 'redux-thunk';
 
-import createHistory from 'history/createBrowserHistory';
 import HomePage from "./components/HomePage";
 import CategoryPage from "./components/CategoryPage";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MainLayout from "./components/MainLayout";
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import AddPostPage from "./components/AddPostPage";
+import PostPage from "./components/PostPage";
+import {history} from "./history";
 
 // Create a history of your choosing (we're using a browser history in this case)
-const history = createHistory()
 
 // Build the middleware for intercepting and dispatching navigation actions
 const middleware = routerMiddleware(history)
@@ -49,6 +48,10 @@ const store = createStore(
 //store.dispatch(fetchCategories());
 //store.dispatch(fetchAllPosts());
 
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+injectTapEventPlugin();
+
 
 ReactDOM.render(
     <Provider store={store}>
@@ -61,7 +64,11 @@ ReactDOM.render(
 {/*
                         <Route exact path='/' component={HomePage}/>
 */}
-                        <Route exact path='/home' component={HomePage}/>
+                        <Route exact path='/' component={HomePage}/>
+                        <Route exact path='/add' component={AddPostPage}/>
+                        <Route exact path='/posts/:postId' component={PostPage}/>
+                        <Route exact path='/posts/:postId/edit' component={AddPostPage}/>
+
 
                         {/* both /roster and /roster/:number begin with /roster */}
                         <Route path='/about' component={CategoryPage}/>

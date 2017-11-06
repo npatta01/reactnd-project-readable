@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 class NavigationDrawer extends Component {
 
     static propTypes = {
-        onToggleDrawer: PropTypes.func.isRequired
+        openState : PropTypes.bool.isRequired
     }
 
     constructor() {
@@ -18,18 +18,24 @@ class NavigationDrawer extends Component {
         this.state = {title: ''}
     }
 
+    handleClose = (open) => {
+        console.log(open)
+    };
+
+
     render() {
         let forceNavDown = {'top': '64px'};
 
-        let {onToggleDrawer} = this.props;
+        let {openState} = this.props;
 
         return (
 
             <div>
-                <Drawer open={true} containerStyle={forceNavDown}>
+                <Drawer open={openState}
+                        containerStyle={forceNavDown}>
 
                     <MenuItem
-                        containerElement={<Link to="/home"/>}
+                        containerElement={<Link to="/"/>}
                     >Home
                     </MenuItem>
                     <MenuItem

@@ -39,9 +39,10 @@ class BlogApi {
         return instance.put(`/posts/${id}`, post)
     }
 
-    static votePost(id, option) {
+    static updatePostScore(id, option) {
+        const payload = {option}
 
-        return instance.post(`/posts/${id}`, {option})
+        return instance.post(`/posts/${id}`, payload)
     }
 
     static getPostComments(postId) {
