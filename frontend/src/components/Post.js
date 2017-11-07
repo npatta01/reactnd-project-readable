@@ -18,7 +18,7 @@ import {connect} from 'react-redux'
 
 
 import './style.css';
-import {votePost} from "../actions/postActions";
+import {deletePost, votePost} from "../actions/postActions";
 
 const styles = {
     chip: {
@@ -43,7 +43,7 @@ class PostView extends Component {
     }
 
     render() {
-        const {post, updateVoteScore} = this.props;
+        const {post, updateVoteScore,deletePost} = this.props;
         const category = `#${post.category}`;
         const time = timeAgo(post.timestamp);
         const profileUrl = `https://api.adorable.io/avatars/40/${post.author}`
@@ -76,10 +76,11 @@ class PostView extends Component {
 
                     <FlatButton
                         icon={<Delete/>}
+                        onClick={deletePost}
                     />
 
                     <FlatButton
-                        icon={<Edit/>} onClick={this.editPost}
+                        icon={<Edit/>} onClick={this.deletePost}
                     />
 
                     <Vote voteScore={post.voteScore} onVote={updateVoteScore}/>
@@ -98,8 +99,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch,
-    deletePost: (posts) => {
-
+    deletePost: () => {
+        const {post} = ownProps;
+        dispatch(deletePost(post))
     },
     updateVoteScore: (action) => {
         const {post} = ownProps;

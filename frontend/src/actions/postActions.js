@@ -46,7 +46,7 @@ export const createPost = (data) => {
 
 export const updatePost = (data) => {
     return (dispatch) => {
-        BlogApi.updatePost(data.id,data.title,data.body).then((response)=>{
+        BlogApi.updatePost(data).then((response)=>{
             const post = response.data;
             dispatch({type: Types.UPDATE_POST, post})
             history.push(`/posts/${post.id}`)
@@ -76,4 +76,9 @@ export const votePost = (postId, option) => {
             dispatch({ type: Types.UPDATE_POST_SCORE, post,sortOrder:option })
         })
     }
+}
+
+export const setCurrentPost = (postId) => {
+
+    return {type: Types.SET_CURRENT_POST, postId}
 }

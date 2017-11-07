@@ -8,11 +8,11 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import NavigationDrawer from "./NavigationDrawer";
 import './style.css';
 import PostList from "./PostList";
-import {fetchCategories} from "../actions/categoryActions";
+import {fetchCategories, setCurrentCategory} from "../actions/categoryActions";
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getCurrentPosts} from "../selectors/index";
-import {updateSortOrder} from "../actions/postActions";
+import {setCurrentPost, updateSortOrder} from "../actions/postActions";
 const queryString = require('query-string');
 
 
@@ -24,11 +24,33 @@ class HomePage extends Component {
     }
 
     navigateToAdd = () =>{
+        this.props.setCurrentPost(null);
         this.props.history.push("/add");
     }
 
     sortChange  = (sortOrder) =>{
         this.props.updateSortOrder(sortOrder);
+    }
+
+    componentWillMount() {
+        this.props.setCurrentPost(null);
+        this.callFetchData(this.props)
+    }
+
+
+    callFetchData(props){
+        const sortOrder = queryString.parse(props.location.search).voteScore
+        const category = props.match.params.category
+
+        this.props.fetchData(sortOrder,category)
+    }
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.location.search.voteScore !== this.props.location.search.voteScore
+        || prevProps.match.params.category !== this.props.match.params.category){
+           this.callFetchData(this.props)
+            //const k = 7;
+        }
+
     }
 
 
@@ -76,14 +98,19 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch,ownProps) => ({
     dispatch,
-    fetchData: () => {
-        const sortOrder = queryString.parse(ownProps.location.search) || 'posted'
-        const category = this.props.match.params.category || 'all';
-        dispatch(updateSortOrder(sortOrder))
-        dispatch(fetchCategories());
+    fetchData: (sortOrder,category) => {
+        const _sortOrder = sortOrder || 'posted'
+        const _category = category || 'all';
+        dispatch(updateSortOrder(_sortOrder));
+        dispatch(setCurrentCategory(_category));
     },
+
     updateSortOrder: (sortOrder) =>{
         dispatch(updateSortOrder(sortOrder))
+    },
+
+    setCurrentPost : (postId) =>{
+        dispatch(setCurrentPost(postId))
     }
 
 })

@@ -30,18 +30,16 @@ class CommentEdit extends Component {
         let {comment} = this.props;
 
         if (comment === undefined) {
-            comment = {author: 'guestuser', body: '', voteScore: 0, timestamp: new Date().getTime()}
+            comment = {author: 'guestuser', body: '', voteScore: 0, timestamp: new Date().getTime(), deleted: false}
         }
 
         const profileUrl = `https://api.adorable.io/avatars/40/${comment.author}`
 
-        const time = timeAgo(comment.timestamp);
         const {handleSubmit, pristine, reset, submitting, invalid, onSubmit, categories} = this.props;
-        const {onToggle} = this.props;
 
         return (
             <Paper zDepth={1}>
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <div>
 
                         <div className="commentContainer">
@@ -120,4 +118,4 @@ function mapStateToProps(state, props) {
     };
 }
 
-export default connect(mapStateToProps)(reduxForm({ enableReinitialize: true })(CommentEdit));
+export default connect(mapStateToProps)(reduxForm({enableReinitialize: true})(CommentEdit));

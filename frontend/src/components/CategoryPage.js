@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class CategoryPage extends Component {
     constructor() {
@@ -7,17 +9,38 @@ class CategoryPage extends Component {
         this.state = {title: ''}
     }
 
-    render() {
+    renderCategory(category) {
+        const {name, path} = category;
         return (
-            <div >
+            <div key={name}>
+                <Link to={path}><h2>{name} </h2></Link>
+            </div>
+        )
+    }
+
+    render() {
+        const {categories} = this.props;
+        const categoryViews = categories.map((c) => this.renderCategory(c))
+        return (
+            <div>
                 <h2>Category Page</h2>
 
                 <div>
-
+                    {categoryViews}
                 </div>
             </div>
         );
     }
 }
 
-export default CategoryPage
+
+const mapStateToProps = state => ({
+    categories: state.categories.all
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    dispatch,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage)
+

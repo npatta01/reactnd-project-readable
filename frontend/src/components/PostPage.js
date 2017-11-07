@@ -23,8 +23,7 @@ class PostPage extends Component {
         const {post,comments} = this.props;
 
         if (post) {
-            const commentsViews = comments.map((c) => <CommentContainer key={c.id} comment={c} isEdit={false}/>);
-
+            const commentsViews = comments.map((c) => <CommentContainer key={c.id} parentId={c.parentId} comment={c} isEdit={false}/>);
             return (
 
                 <div>
@@ -37,7 +36,7 @@ class PostPage extends Component {
                             Add your voice
                         </h3>
                         <div>
-                            <CommentContainer isEdit={true} toggleDisabled={true}/>
+                            <CommentContainer isEdit={true} toggleDisabled={true} parentId={post.id} />
                         </div>
 
                     </div>

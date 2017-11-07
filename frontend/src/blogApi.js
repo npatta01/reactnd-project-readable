@@ -32,11 +32,8 @@ class BlogApi {
         return instance.delete(`/posts/${id}`)
     }
 
-    static updatePost(id, title, body) {
-        const post = {
-            title, body
-        }
-        return instance.put(`/posts/${id}`, post)
+    static updatePost(post) {
+        return instance.put(`/posts/${post.id}`, post)
     }
 
     static updatePostScore(id, option) {
@@ -61,9 +58,8 @@ class BlogApi {
         return instance.post(`/comments`, comment)
     }
 
-    static updateComment(commentId, timestamp, body) {
-        const comment = {timestamp, body}
-        return instance.put(`/comments/${commentId}`, comment)
+    static updateComment(comment) {
+        return instance.put(`/comments/${comment.id}`, comment)
     }
 
     static voteComment(commentId, option) {

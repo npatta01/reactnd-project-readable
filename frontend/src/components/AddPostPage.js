@@ -12,7 +12,11 @@ class AddPostPage extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchData(this.props.match.params.postId)
+        const {postId} = this.props.match.params;
+
+        if (postId){
+            this.props.fetchData(postId)
+        }
     }
 
     createPost = (data) => {

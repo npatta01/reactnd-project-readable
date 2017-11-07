@@ -10,6 +10,9 @@ function categories(state = {
         case Types.FETCH_CATEGORY:
             return {...state, all: action.categories};
 
+        case Types.UPDATE_CURRENT_CATEGORY:
+            return {...state, current: action.category};
+
         default:
             return state
     }

@@ -39,7 +39,7 @@ class NavigationDrawer extends Component {
                     >Home
                     </MenuItem>
                     <MenuItem
-                        containerElement={<Link to="/about"/>}>
+                        containerElement={<Link to="/categories"/>}>
                         Categories</MenuItem>
 
                 </Drawer>

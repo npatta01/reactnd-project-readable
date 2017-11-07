@@ -32,6 +32,9 @@ function posts(state = {
             const newPosts = [...subPosts, action.post]
             return {...state, all: newPosts, current: action.post.id};
 
+        case Types.SET_CURRENT_POST:
+            return {...state, current: action.postId};
+
         default:
             return state
 

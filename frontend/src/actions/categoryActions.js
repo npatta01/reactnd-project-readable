@@ -9,3 +9,8 @@ export const fetchCategories = () => {
         });
     }
 }
+
+export const setCurrentCategory = (category) => {
+
+    return {type: Types.UPDATE_CURRENT_CATEGORY, category}
+}

@@ -68,10 +68,10 @@ ReactDOM.render(
                         <Route exact path='/add' component={AddPostPage}/>
                         <Route exact path='/posts/:postId' component={PostPage}/>
                         <Route exact path='/posts/:postId/edit' component={AddPostPage}/>
+                        <Route path='/categories' component={CategoryPage}/>
 
+                        <Route path='/:category' component={HomePage}/>
 
-                        {/* both /roster and /roster/:number begin with /roster */}
-                        <Route path='/about' component={CategoryPage}/>
                     </Switch>
                 </MainLayout>
             </MuiThemeProvider>

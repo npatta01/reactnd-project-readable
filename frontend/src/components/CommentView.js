@@ -21,12 +21,12 @@ class CommentView extends Component {
 
     render() {
 
-        const {comment} = this.props;
+        const {comment,onDelete} = this.props;
         const profileUrl = `https://api.adorable.io/avatars/40/${comment.author}`
 
         const time = timeAgo(comment.timestamp);
 
-        const {onToggle} = this.props;
+        const {updateVoteScore} = this.props;
 
         return (
             <Paper zDepth={1}>
@@ -57,6 +57,7 @@ class CommentView extends Component {
 
                             <FlatButton
                                 icon={<Delete/>}
+                                onClick={onDelete}
                             />
 
 
@@ -65,7 +66,7 @@ class CommentView extends Component {
                             {/*<FlatButton
                                 icon={<Edit/>}
                             />*/}
-                            <Vote voteScore={comment.voteScore}/>
+                            <Vote voteScore={comment.voteScore} onVote={updateVoteScore}/>
                         </div>
 
 
