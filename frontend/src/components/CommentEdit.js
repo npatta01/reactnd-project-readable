@@ -3,16 +3,10 @@ import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import {connect} from 'react-redux';
-import Toggle from 'material-ui/Toggle';
 
-import Vote from "./Vote";
 import Avatar from 'material-ui/Avatar';
 import '../App.css';
-import Delete from 'material-ui/svg-icons/action/delete';
-import Edit from 'material-ui/svg-icons/image/edit';
-import {timeAgo} from "../utils";
-import {Field, reduxForm, formValueSelector} from 'redux-form';
-import MenuItem from 'material-ui/MenuItem';
+import {Field, reduxForm} from 'redux-form';
 import {
     SelectField,
     TextField,

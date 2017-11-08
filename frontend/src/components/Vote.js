@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton';
 import ThumbUp from 'material-ui/svg-icons/action/thumb-up';
 import ThumbDown from 'material-ui/svg-icons/action/thumb-down';
 import PropTypes from 'prop-types'
-import IconButton from 'material-ui/IconButton';
 
 
 class Vote extends Component {

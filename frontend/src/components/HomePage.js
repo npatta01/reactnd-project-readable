@@ -1,11 +1,9 @@
 
 import React, {Component} from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 
-import NavigationDrawer from "./NavigationDrawer";
 import './style.css';
 import PostList from "./PostList";
 import {fetchCategories, setCurrentCategory} from "../actions/categoryActions";

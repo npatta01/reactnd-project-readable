@@ -1,17 +1,12 @@
 import React, {Component} from 'react';
 
 import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider';
 import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
 
 import Vote from "./Vote";
 import Avatar from 'material-ui/Avatar';
 import '../App.css';
 import Delete from 'material-ui/svg-icons/action/delete';
-import Edit from 'material-ui/svg-icons/image/edit';
-import FontIcon from 'material-ui/FontIcon';
 import {timeAgo} from "../utils";
 
 class CommentView extends Component {

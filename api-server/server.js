@@ -1,4 +1,5 @@
 require('dotenv').config()
+let path = require('path');
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -10,10 +11,11 @@ const comments = require('./comments')
 
 const app = express()
 
-app.use(express.static('public'))
+app.use(express.static('build'))
 app.use(cors())
 
 
+/*
 app.get('/', (req, res) => {
   const help = `
   <pre>
@@ -111,15 +113,17 @@ app.get('/', (req, res) => {
 
   res.send(help)
 })
+*/
 
 app.use((req, res, next) => {
-  const token = req.get('Authorization')
+  const token = req.get('Authorization')||'index'
 
   if (token) {
     req.token = token
     next()
   } else {
-    res.status(403).send({
+
+      res.status(403).send({
       error: 'Please provide an Authorization header to identify yourself (can be whatever you want)'
     })
   }
@@ -311,6 +315,12 @@ app.delete('/comments/:id', (req, res) => {
           }
       )
 })
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 app.listen(config.port, () => {
   console.log('Server listening on port %s, Ctrl+C to stop', config.port)

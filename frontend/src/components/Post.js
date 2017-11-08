@@ -80,7 +80,7 @@ class PostView extends Component {
                     />
 
                     <FlatButton
-                        icon={<Edit/>} onClick={this.deletePost}
+                        icon={<Edit/>} onClick={this.editPost}
                     />
 
                     <Vote voteScore={post.voteScore} onVote={updateVoteScore}/>

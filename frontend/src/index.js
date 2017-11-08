@@ -68,7 +68,7 @@ ReactDOM.render(
                         <Route exact path='/add' component={AddPostPage}/>
                         <Route exact path='/posts/:postId' component={PostPage}/>
                         <Route exact path='/posts/:postId/edit' component={AddPostPage}/>
-                        <Route path='/categories' component={CategoryPage}/>
+                        <Route path='/postcategories' component={CategoryPage}/>
 
                         <Route path='/:category' component={HomePage}/>
 

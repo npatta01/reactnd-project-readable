@@ -35,5 +35,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^6.24.1"
-  }
+  },
+  "proxy": "http://localhost:3001"
+
 }
