@@ -53,13 +53,14 @@ heroku logs --tail
 
 
 **Creating Post**
-![Create Post](screenshots/create_post.png)
+![Create Post](screenshots/create_post.gif)
+
 
 **Create / view comment**
-![Create / view comment](screenshots/create_view_comment.png)
+![Create / view comment](screenshots/create_view_comment.gif)
 
-**Comment upvote/downvote**
-![Comment upvote/ downvvote](screenshots/comment_upvote_downvote.gif)
+**Comment upvote/down vote**
+![Comment upvote/downvvote](screenshots/comment_upvote_downvote.gif)
 
 ## Contributing
 At this time, this project is not open for contribution. The purpose of this project is to complete Udacity React Redux Course.
