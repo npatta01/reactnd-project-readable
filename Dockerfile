@@ -5,8 +5,6 @@ ADD frontend/package.json .
 RUN yarn --production
 ADD frontend/ .
 RUN yarn build
-RUN ls
-RUN pwd
 
 
 # server artifacts
@@ -16,5 +14,4 @@ ADD api-server/package.json .
 RUN yarn --production
 ADD api-server/ .
 COPY --from=frontend /src/build build
-RUN which node
 CMD node server.js
