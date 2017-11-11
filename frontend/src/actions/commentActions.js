@@ -18,15 +18,19 @@ export const createComment = (comment, parentId) => {
         BlogApi.addComment(updatedComment).then(response => {
             const _comment = response.data;
             dispatch({type: Types.ADD_COMMENT, comment: _comment})
+            dispatch({type: Types.UPDATE_COMMENT_COUNT, postId: parentId, counter: 1})
         })
     }
 }
 
 export const deleteComment = (comment) => {
     return (dispatch) => {
-        BlogApi.deleteComment(comment.id).then(() =>
-            dispatch({type: Types.DELETE_COMMENT, comment})
-        );
+        BlogApi.deleteComment(comment.id).then(() => {
+                dispatch({type: Types.DELETE_COMMENT, comment})
+                dispatch({type: Types.UPDATE_COMMENT_COUNT, postId: comment.parentId, counter: -1})
+            }
+        )
+
     }
 }
 

@@ -9,6 +9,7 @@ import reducer from './reducers'
 import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
 import {Route, Switch} from 'react-router';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger'
 
 import HomePage from "./components/HomePage";
 import CategoryPage from "./components/CategoryPage";
@@ -26,21 +27,21 @@ import {history} from "./history";
 const middleware = routerMiddleware(history)
 
 
-const logger = store => next => action => {
+/*const logger = store => next => action => {
     console.group(action.type)
     console.info('dispatching', action)
     let result = next(action)
     console.log('next state', store.getState())
     console.groupEnd(action.type)
     return result
-}
+}*/
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
     reducer,
     composeEnhancers(
-        applyMiddleware(thunk,logger),
+        applyMiddleware(thunk, logger),
     )
 )
 
@@ -61,12 +62,12 @@ ReactDOM.render(
             <MuiThemeProvider>
                 <MainLayout>
                     <Switch>
-{/*
+                        {/*
                         <Route exact path='/' component={HomePage}/>
 */}
                         <Route exact path='/' component={HomePage}/>
                         <Route exact path='/add' component={AddPostPage}/>
-                        <Route exact path='/posts/:postId' component={PostPage}/>
+                        <Route exact path='/:category/:postId' component={PostPage}/>
                         <Route exact path='/posts/:postId/edit' component={AddPostPage}/>
                         <Route path='/postcategories' component={CategoryPage}/>
 

@@ -23,6 +23,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.1.2",
     "redux-form-material-ui": "^4.3.0",
+    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "uuid-v4": "^0.1.0"
@@ -37,5 +38,4 @@
     "babel-plugin-transform-class-properties": "^6.24.1"
   },
   "proxy": "http://localhost:3001"
-
 }

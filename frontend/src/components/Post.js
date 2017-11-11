@@ -28,6 +28,10 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
     },
+
+    commentWrapper :{
+        paddingLeft: '15px'
+    }
 };
 
 class PostView extends Component {
@@ -48,7 +52,7 @@ class PostView extends Component {
         const time = timeAgo(post.timestamp);
         const profileUrl = `https://api.adorable.io/avatars/40/${post.author}`
 
-        const titleElem = <Link to={`/posts/${ post.id }`}> {post.title}</Link>;
+        const titleElem = <Link to={`/${post.category}/${ post.id }`}> {post.title}</Link>;
         return (
             <Card className="post">
                 <CardHeader
@@ -62,6 +66,13 @@ class PostView extends Component {
                 <CardText>
                     {post.body}
                 </CardText>
+
+                <div style={styles.commentWrapper}>
+                    <p>
+                        # Comments : {post.commentCount}
+                    </p>
+
+                </div>
 
                 <div style={styles.wrapper}>
                     <Chip style={styles.chip}>
