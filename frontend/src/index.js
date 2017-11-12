@@ -20,6 +20,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import AddPostPage from "./components/AddPostPage";
 import PostPage from "./components/PostPage";
 import {history} from "./history";
+import ErrorPage from "./components/ErrorPage";
 
 // Create a history of your choosing (we're using a browser history in this case)
 
@@ -67,6 +68,8 @@ ReactDOM.render(
 */}
                         <Route exact path='/' component={HomePage}/>
                         <Route exact path='/add' component={AddPostPage}/>
+                        <Route exact path='/error' component={ErrorPage}/>
+
                         <Route exact path='/:category/:postId' component={PostPage}/>
                         <Route exact path='/posts/:postId/edit' component={AddPostPage}/>
                         <Route path='/postcategories' component={CategoryPage}/>
