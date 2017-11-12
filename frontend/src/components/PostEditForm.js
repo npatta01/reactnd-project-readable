@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Field, reduxForm, formValueSelector} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import MenuItem from 'material-ui/MenuItem';
-import {
-    SelectField,
-    TextField,
-} from 'redux-form-material-ui';
+import {SelectField, TextField,} from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import PropTypes from 'prop-types'
 
@@ -22,16 +19,15 @@ class PostEditForm extends Component {
     }
 
     static propTypes = {
-        onSubmit : PropTypes.func.isRequired,
+        onSubmit: PropTypes.func.isRequired,
         categories: PropTypes.array.isRequired
     }
 
 
-
     render() {
-        const {handleSubmit, pristine, reset, submitting,invalid,onSubmit,categories} = this.props;
+        const {handleSubmit, pristine, reset, submitting, invalid, onSubmit, categories} = this.props;
 
-        const categoriesView = categories.map((c)=>
+        const categoriesView = categories.map((c) =>
             <MenuItem key={c.name} value={c.name} primaryText={c.name}/>
         );
 
@@ -81,8 +77,8 @@ class PostEditForm extends Component {
 
 
                 <div>
-                    <FlatButton label="Submit" primary={true} type="submit"  disabled={invalid }/>
-                    <FlatButton label="Clear" secondary={true}   disabled={pristine || submitting}
+                    <FlatButton label="Submit" primary={true} type="submit" disabled={invalid}/>
+                    <FlatButton label="Clear" secondary={true} disabled={pristine || submitting}
                                 onClick={reset}>
 
                     </FlatButton>
@@ -92,21 +88,6 @@ class PostEditForm extends Component {
         );
     }
 }
-/*
-
-const selector = formValueSelector('addPost');
-
-PostEditForm = connect(state => ({
-}))(PostEditForm);
-
-PostEditForm = reduxForm({
-    form: 'addPost',
-    enableReinitialize : true
-
-})(PostEditForm);
-
-export default PostEditForm;
-*/
 
 function mapStateToProps(state, props) {
     return {
@@ -114,4 +95,4 @@ function mapStateToProps(state, props) {
     };
 }
 
-export default connect(mapStateToProps)(reduxForm({ enableReinitialize: true })(PostEditForm));
+export default connect(mapStateToProps)(reduxForm({enableReinitialize: true})(PostEditForm));

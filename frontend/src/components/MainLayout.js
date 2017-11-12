@@ -5,7 +5,6 @@ import {fetchCategories} from "../actions/categoryActions";
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router'
 import {fetchAllPosts} from "../actions/postActions";
-import PropTypes from 'prop-types'
 
 
 class MainLayout extends Component {
@@ -41,14 +40,14 @@ class MainLayout extends Component {
                 //margin: '80px 20px 20px 15px',
                 paddingLeft: navDrawerOpen ? paddingLeftDrawerOpen : 0,
                 // minHeight: '800px'
-                paddingTop : '80px',
+                paddingTop: '80px',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 //minWidth: '500px'
 
             },
-            appBar : {
+            appBar: {
                 position: "fixed", top: 0,
             }
         };
@@ -99,7 +98,6 @@ const mapDispatchToProps = dispatch => ({
 
 // export default connect(mapStateToProps, mapDispatchToProps)(MainLayout)
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainLayout))
-
 
 
 /*

@@ -14,7 +14,7 @@ class BlogApi {
         return instance.get("/categories")
     }
 
-    static getPosts(category=null) {
+    static getPosts(category = null) {
         const url = category ? `/${category}/posts` : '/posts'
 
         return instance.get(url)

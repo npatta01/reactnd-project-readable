@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import './index.css'
 //import App from './App'
 import registerServiceWorker from './registerServiceWorker'
-import {createStore, applyMiddleware, compose} from 'redux'
+import {applyMiddleware, compose, createStore} from 'redux'
 import {Provider} from 'react-redux'
 import reducer from './reducers'
-import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
+import {ConnectedRouter, routerMiddleware} from 'react-router-redux'
 import {Route, Switch} from 'react-router';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger'

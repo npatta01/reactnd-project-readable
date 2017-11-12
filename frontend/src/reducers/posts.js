@@ -32,12 +32,11 @@ function posts(state = {
             return {...state, current: action.postId};
         case Types.UPDATE_COMMENT_COUNT:
             const _subPosts = state.all.filter((p) => p.id !== action.postId)
-            let post = state.all.filter((p) => p.id===action.postId)[0]
+            let post = state.all.filter((p) => p.id === action.postId)[0]
             const currentCommentCount = post.commentCount + action.counter
-            post= {...post,commentCount:currentCommentCount}
+            post = {...post, commentCount: currentCommentCount}
             const _newPosts = [..._subPosts, post]
             return {...state, all: _newPosts};
-
 
 
         default:

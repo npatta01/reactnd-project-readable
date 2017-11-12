@@ -16,12 +16,13 @@ class Vote extends Component {
         onVote: PropTypes.func.isRequired
     }
 
-    upVote = ()=>{
+    upVote = () => {
         this.props.onVote('upVote')
     }
-    downVote = ()=>{
+    downVote = () => {
         this.props.onVote('downVote')
     }
+
     render() {
         const {voteScore} = this.props;
 

@@ -11,3 +11,7 @@ const timeAgoEnglish = new javascriptTimeAgo('en-US')
 export const timeAgo = (date) => {
     return timeAgoEnglish.format(date)
 }
+
+export const getProfileUrl = (author) => {
+    return `https://api.adorable.io/avatars/40/${author}`
+}

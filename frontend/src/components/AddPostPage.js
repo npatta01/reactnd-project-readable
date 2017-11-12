@@ -14,7 +14,7 @@ class AddPostPage extends Component {
     componentDidMount() {
         const {postId} = this.props.match.params;
 
-        if (postId){
+        if (postId) {
             this.props.fetchData(postId)
         }
     }
@@ -26,7 +26,7 @@ class AddPostPage extends Component {
 
     render() {
         const {categories, post} = this.props;
-        let initialValues = {...post};
+        const initialValues = {...post};
 
         return (
             <div>

@@ -7,17 +7,13 @@ import Vote from "./Vote";
 import Avatar from 'material-ui/Avatar';
 import '../App.css';
 import Delete from 'material-ui/svg-icons/action/delete';
-import {timeAgo} from "../utils";
+import {getProfileUrl, timeAgo} from "../utils";
 
 class CommentView extends Component {
-    constructor() {
-        super()
-    }
-
     render() {
 
-        const {comment,onDelete} = this.props;
-        const profileUrl = `https://api.adorable.io/avatars/40/${comment.author}`
+        const {comment, onDelete} = this.props;
+        const profileUrl = getProfileUrl(comment.author);
 
         const time = timeAgo(comment.timestamp);
 
@@ -55,12 +51,6 @@ class CommentView extends Component {
                                 onClick={onDelete}
                             />
 
-
-
-
-                            {/*<FlatButton
-                                icon={<Edit/>}
-                            />*/}
                             <Vote voteScore={comment.voteScore} onVote={updateVoteScore}/>
                         </div>
 

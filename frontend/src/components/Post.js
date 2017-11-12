@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText, CardTitle} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
 import PropTypes from 'prop-types'
@@ -29,7 +29,7 @@ const styles = {
         flexWrap: 'wrap',
     },
 
-    commentWrapper :{
+    commentWrapper: {
         paddingLeft: '15px'
     }
 };
@@ -47,7 +47,7 @@ class PostView extends Component {
     }
 
     render() {
-        const {post, updateVoteScore,deletePost} = this.props;
+        const {post, updateVoteScore, deletePost} = this.props;
         const category = `#${post.category}`;
         const time = timeAgo(post.timestamp);
         const profileUrl = `https://api.adorable.io/avatars/40/${post.author}`

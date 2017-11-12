@@ -1,36 +1,28 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types'
+import React from 'react';
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-class CategoryPage extends Component {
-    constructor() {
-        super()
-        this.state = {title: ''}
-    }
-
-    renderCategory(category) {
-        const {name, path} = category;
-        return (
-            <div key={name}>
-                <Link to={path}><h2>{name} </h2></Link>
-            </div>
-        )
-    }
-
-    render() {
-        const {categories} = this.props;
-        const categoryViews = categories.map((c) => this.renderCategory(c))
-        return (
-            <div>
-                <h2>Category Page</h2>
-
-                <div>
-                    {categoryViews}
+function CategoryPage(props) {
+    function categoryViews() {
+        const {categories} = props;
+        const renderCategories = categories.map((category) => {
+            return (
+                <div key={category.name}>
+                    <Link to={category.path}><h2>{category.name} </h2></Link>
                 </div>
-            </div>
-        );
+            );
+        });
+        return renderCategories;
     }
+
+    return (
+        <div>
+            <h2>Category Page</h2>
+            <div>
+                {categoryViews()}
+            </div>
+        </div>
+    );
 }
 
 

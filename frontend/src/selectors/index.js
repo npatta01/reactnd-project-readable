@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect'
+import {createSelector} from 'reselect'
 import sortBy from 'lodash/sortBy';
 
 
@@ -7,19 +7,19 @@ const getPosts = (state) => state.posts.all
 const getCurrentSortOrder = (state) => state.posts.sortOrder
 
 
-export const getCurrentPosts = createSelector  (
-    [getPosts,getCurrentCategory,getCurrentSortOrder] ,
-    (allPosts,category, sortOrder) =>{
+export const getCurrentPosts = createSelector(
+    [getPosts, getCurrentCategory, getCurrentSortOrder],
+    (allPosts, category, sortOrder) => {
         let posts = allPosts;
 
-        if (category!=="all"){
-            posts = posts.filter((p)=>p.category ===category);
+        if (category !== "all") {
+            posts = posts.filter((p) => p.category === category);
         }
 
-        if (sortOrder==="posted"){
+        if (sortOrder === "posted") {
             posts = sortBy(posts, ['timestamp']).reverse();
 
-        }else{
+        } else {
             posts = sortBy(posts, ['voteScore']).reverse();
         }
 
@@ -31,15 +31,15 @@ export const getCurrentPosts = createSelector  (
 
 const getCurrentPostId = (state) => state.posts.current
 
-export const getCurrentPost = createSelector  (
-    [getPosts,getCurrentPostId] ,
-    (allPosts,postId) =>{
+export const getCurrentPost = createSelector(
+    [getPosts, getCurrentPostId],
+    (allPosts, postId) => {
 
-        let subPosts = allPosts.filter((p)=>p.id===postId);
+        let subPosts = allPosts.filter((p) => p.id === postId);
 
-        if (subPosts.length===0){
+        if (subPosts.length === 0) {
             return null
-        }else{
+        } else {
             return subPosts[0]
         }
 

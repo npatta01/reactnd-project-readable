@@ -39,9 +39,16 @@ class CommentContainer extends Component {
         }
     }
 
+    toggle = () => {
+        this.setState({
+            isEdit: !this.state.isEdit
+        })
+
+    }
+
     render() {
 
-        const {comment, toggleDisabled,updateVoteScore,deleteComment} = this.props;
+        const {comment, toggleDisabled, updateVoteScore, deleteComment} = this.props;
         const {isEdit} = this.state;
 
         const initialValues = {...comment}
@@ -49,7 +56,7 @@ class CommentContainer extends Component {
 
         let child = null;
         if (isEdit) {
-            child = <CommentEdit comment={comment} initialValues={initialValues} onSubmit={this.upsertComment} />
+            child = <CommentEdit comment={comment} initialValues={initialValues} onSubmit={this.upsertComment}/>
         } else {
             child = <CommentView comment={comment} updateVoteScore={updateVoteScore} onDelete={deleteComment}/>
         }
@@ -72,16 +79,8 @@ class CommentContainer extends Component {
             </div>
         )
 
-
     }
 
-
-    toggle = () => {
-        this.setState({
-            isEdit: !this.state.isEdit
-        })
-
-    }
 
 }
 
@@ -102,7 +101,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
         const {comment} = ownProps;
         dispatch(voteComment(comment.id, action))
     },
-    deleteComment: () =>{
+    deleteComment: () => {
         const {comment} = ownProps;
         dispatch(deleteComment(comment))
     }

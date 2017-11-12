@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 class NavigationDrawer extends Component {
 
     static propTypes = {
-        openState : PropTypes.bool.isRequired
+        openState: PropTypes.bool.isRequired
     }
 
     constructor() {

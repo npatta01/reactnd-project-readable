@@ -1,9 +1,12 @@
 import * as Types from "../actions/actionTypes"
+import {sortBy} from "lodash";
 
 function comments(state = {
     all: []
 }, action) {
 
+    let newComments = [];
+    let subComments = []
     switch (action.type) {
         case Types.FETCH_COMMENTS:
             return {...state, all: action.comments};
@@ -12,13 +15,13 @@ function comments(state = {
         case Types.ADD_COMMENT:
         case Types.UPDATE_COMMENT:
         case Types.VOTE_COMMENT:
-            const subComments = state.all.filter((c) => c.id !== action.comment.id)
-            const newComments = [...subComments, action.comment]
+            subComments = state.all.filter((c) => c.id !== action.comment.id)
+            newComments = sortBy([...subComments, action.comment], ['timestamp']).reverse();
             return {...state, all: newComments};
 
         case Types.DELETE_COMMENT:
-            const comments = state.all.filter((c) => c.id !== action.comment.id)
-            return {...state, all: comments};
+            newComments = state.all.filter((c) => c.id !== action.comment.id)
+            return {...state, all: newComments};
 
         default:
             return state

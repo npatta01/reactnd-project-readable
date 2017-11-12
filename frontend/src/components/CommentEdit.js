@@ -7,18 +7,12 @@ import {connect} from 'react-redux';
 import Avatar from 'material-ui/Avatar';
 import '../App.css';
 import {Field, reduxForm} from 'redux-form';
-import {
-    SelectField,
-    TextField,
-} from 'redux-form-material-ui';
+import {TextField,} from 'redux-form-material-ui';
+import {getProfileUrl} from "../utils";
 
 const required = value => (value == null ? 'Required' : undefined);
 
 class CommentEdit extends Component {
-    constructor() {
-        super()
-    }
-
     render() {
 
         let {comment} = this.props;
@@ -27,9 +21,9 @@ class CommentEdit extends Component {
             comment = {author: 'guestuser', body: '', voteScore: 0, timestamp: new Date().getTime(), deleted: false}
         }
 
-        const profileUrl = `https://api.adorable.io/avatars/40/${comment.author}`
+        const profileUrl = getProfileUrl(comment.author)
 
-        const {handleSubmit, pristine, reset, submitting, invalid, onSubmit, categories} = this.props;
+        const {handleSubmit, invalid, onSubmit} = this.props;
 
         return (
             <Paper zDepth={1}>
@@ -89,20 +83,6 @@ class CommentEdit extends Component {
 
 
 }
-
-/*
-const selector = formValueSelector('editComment');
-
-CommentEdit = connect(state => ({}))(CommentEdit);
-
-CommentEdit = reduxForm({
-    form: 'editComment'})(CommentEdit);
-
-
-
-
-export default CommentEdit;
-*/
 
 function mapStateToProps(state, props) {
     console.log(props)
