@@ -26,10 +26,10 @@ docker run --env PORT=3002 -it -p 3002:3002 --rm readable
 
 
 ## Deploying to heroku
-heroku container:login
-heroku create np-readable
-heroku container:push web
-heroku logs --tail
+heroku container:login .   
+heroku create np-readable .   
+heroku container:push web .   
+heroku logs --tail .   
 
 
 
